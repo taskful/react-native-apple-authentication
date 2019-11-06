@@ -3,14 +3,18 @@ import { NativeModules, requireNativeComponent ,Platform } from 'react-native';
 
 const { AppleAuthentication } = NativeModules;
 
-export const RNSignInWithAppleButton = requireNativeComponent('RNCSignInWithAppleButton');
+export const SignInWithAppleWhiteButton = requireNativeComponent('RNSignInWithAppleWhiteButton');
 
-export const SignInWithAppleButton = (buttonStyle, callBack) => {
+export const SignInWithAppleBlackButton = requireNativeComponent('RNSignInWithAppleWhiteButton');
+
+export const SignInWithAppleButton = (style, buttonStyle, callBack) => {
   if(Platform.OS === 'ios'){
-    return <RNSignInWithAppleButton style={buttonStyle} onPress={async () => {
+    const Button = buttonStyle === "black" ? SignInWithAppleBlackButton : SignInWithAppleWhiteButton;
+    return <Button style={style} onPress={async () => {
     
         await AppleAuthentication.requestAsync({
-          scopes: [AppleAuthentication.Scope.FULL_NAME, AppleAuthentication.Scope.EMAIL],
+          requestedScopes: [AppleAuthentication.Scope.FULL_NAME, AppleAuthentication.Scope.EMAIL],
+          requestedOperation: AppleAuthentication.Operation.LOGIN,
         }).then((response) => {
           callBack(response) //Display response
           }, (error) => {

@@ -3,16 +3,30 @@
 #import "RNCSignInWithAppleButton.h"
 @import AuthenticationServices;
 
-@interface RNCSignInWithAppleButtonManager : RCTViewManager
-@end
+@interface RNSignInWithAppleBlackButton : RCTViewManager @end
 
-@implementation RNCSignInWithAppleButtonManager
+@implementation RNSignInWithAppleBlackButton
 
-RCT_EXPORT_MODULE(RNCSignInWithAppleButtonManager)
+RCT_EXPORT_MODULE(RNSignInWithAppleBlackButton);
 
 - (UIView *)view
 {
   return [[RNCSignInWithAppleButton alloc] initWithAuthorizationButtonType:ASAuthorizationAppleIDButtonTypeDefault authorizationButtonStyle:ASAuthorizationAppleIDButtonStyleBlack];
+}
+
+RCT_EXPORT_VIEW_PROPERTY(onPress, RCTBubblingEventBlock)
+
+@end
+
+@interface RNSignInWithAppleWhiteButton : RCTViewManager @end
+
+@implementation RNSignInWithAppleWhiteButton
+
+RCT_EXPORT_MODULE(RNSignInWithAppleWhiteButton);
+
+- (UIView *)view
+{
+  return [[RNCSignInWithAppleButton alloc] initWithAuthorizationButtonType:ASAuthorizationAppleIDButtonTypeDefault authorizationButtonStyle:ASAuthorizationAppleIDButtonStyleWhite];
 }
 
 RCT_EXPORT_VIEW_PROPERTY(onPress, RCTBubblingEventBlock)

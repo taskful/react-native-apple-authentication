@@ -3,7 +3,7 @@
 @implementation RNCSignInWithAppleButton
 
 -(instancetype)initWithAuthorizationButtonType:(ASAuthorizationAppleIDButtonType)type authorizationButtonStyle:(ASAuthorizationAppleIDButtonStyle)style {
-  RNCSignInWithAppleButton* btn = [super initWithAuthorizationButtonType:ASAuthorizationAppleIDButtonTypeDefault authorizationButtonStyle:ASAuthorizationAppleIDButtonStyleBlack];
+  RNCSignInWithAppleButton* btn = [super initWithAuthorizationButtonType:type authorizationButtonStyle:style];
   [btn addTarget:self
           action:@selector(onDidPress)
 forControlEvents:UIControlEventTouchUpInside];

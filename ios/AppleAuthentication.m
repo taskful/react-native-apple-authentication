@@ -75,7 +75,8 @@ RCT_EXPORT_METHOD(requestAsync:(NSDictionary *)options
    didCompleteWithAuthorization:(ASAuthorization *)authorization {
   ASAuthorizationAppleIDCredential* credential = authorization.credential;
   NSDictionary* user = @{
-                         @"fullName": RCTNullIfNil(credential.fullName),
+                         @"firstName": RCTNullIfNil(credential.fullName.givenName),
+                         @"lastName": RCTNullIfNil(credential.fullName.familyName),
                          @"email": RCTNullIfNil(credential.email),
                          @"user": credential.user,
                          @"authorizedScopes": credential.authorizedScopes,
