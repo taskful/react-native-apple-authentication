@@ -5,7 +5,7 @@ const { AppleAuthentication } = NativeModules;
 
 export const SignInWithAppleWhiteButton = requireNativeComponent('RNSignInWithAppleWhiteButton');
 
-export const SignInWithAppleBlackButton = requireNativeComponent('RNSignInWithAppleWhiteButton');
+export const SignInWithAppleBlackButton = requireNativeComponent('RNSignInWithAppleBlackButton');
 
 export const SignInWithAppleButton = (style, buttonStyle, callBack) => {
   if(Platform.OS === 'ios'){
