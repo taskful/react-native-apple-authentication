@@ -65,6 +65,16 @@ RCT_EXPORT_METHOD(requestAsync:(NSDictionary *)options
   [ctrl performRequests];
 }
 
+RCT_EXPORT_METHOD(isAvailableAsync:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
+{
+  if (@available(iOS 13.0, *)) {
+    resolve(@(YES));
+  } else {
+    resolve(@(NO));
+  }
+}
+
 
 - (ASPresentationAnchor)presentationAnchorForAuthorizationController:(ASAuthorizationController *)controller {
   return RCTKeyWindow();
